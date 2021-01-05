@@ -1,0 +1,23 @@
+name: process-and-deploy
+on: [push]
+jobs:
+  zip-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - run: python ./scripts/process-notebooks.py
+      - name: deploy-colab
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./colab
+          publish_branch: colab
+      - name: deploy-public
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
