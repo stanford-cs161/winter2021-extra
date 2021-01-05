@@ -13,7 +13,7 @@ def process(dir):
     attr_cell = {
         'cell_type': 'markdown',
         'metadata': {},
-        'source': attribution
+        'source': [line+'\n' for line in attribution]
     }
     ipynb['cells'].insert(0, attr_cell)
     aux = {}
@@ -33,8 +33,8 @@ def process(dir):
             'cell_type': 'code',
             'metadata': {},
             'source': [
-                '# This part downloads needed auxiliary files to Google Colab',
-                '! curl {}/{}-aux.zip > {}-aux.zip && unzip -o {}-aux.zip'.format(website, dir, dir, dir)
+                '# This part downloads needed auxiliary files to Google Colab\n',
+                '! curl {}/{}-aux.zip > {}-aux.zip && unzip -o {}-aux.zip\n'.format(website, dir, dir, dir)
             ]
         }
         ipynb['cells'].insert(1, download_cell)
