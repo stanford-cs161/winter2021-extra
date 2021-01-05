@@ -1,5 +1,1 @@
-This shows up at the top of all notebooks.
-
-## Credit
-
-Credit goes to Mary.
+**Attribution:** These notebooks were originally developed by Mary Wotters and have possibly been modified by Moses Charikar and Nima Anari. Any blames should be directed to Nima and Moses.
